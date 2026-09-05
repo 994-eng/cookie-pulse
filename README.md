@@ -4,6 +4,10 @@ Cookie Pulse is a compact **Cookie Chain** activity console. Connect [Nightly](h
 
 This app is built for the Superteam Earn bounty **Create an App on Cookie Chain**. Cookie Chain is a Solana-compatible SVM: `@solana/web3.js` and the Solana wallet adapter work against the community RPC.
 
+**Live app:** [https://994-eng.github.io/cookie-pulse/](https://994-eng.github.io/cookie-pulse/)
+
+GitHub Pages is published from the `main` branch by `.github/workflows/deploy-pages.yml`. The repository Pages source must be **GitHub Actions** (not “Deploy from a branch”).
+
 ## Bounty checklist
 
 | Requirement | How Cookie Pulse meets it |
@@ -53,14 +57,15 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000). Local dev uses an empty `basePath` so routes stay at `/`.
 
-Production build:
+Production static export (same mode GitHub Pages uses):
 
 ```bash
-npm run build
-npm start
+NEXT_PUBLIC_BASE_PATH=/cookie-pulse npm run build
 ```
+
+That writes a static site to `out/`. Preview it locally with any static server, for example `npx serve out`. `next start` is not used — this app is an `output: 'export'` build.
 
 ### Environment
 
@@ -69,7 +74,10 @@ Copy `.env.example` to `.env.local`. There are no secrets and no paid keys.
 ```
 NEXT_PUBLIC_COOKIE_RPC_URL=https://rpc.cookiescan.io
 NEXT_PUBLIC_COOKIE_EXPLORER_URL=https://cookiescan.io
+NEXT_PUBLIC_BASE_PATH=
 ```
+
+CI sets `NEXT_PUBLIC_BASE_PATH=/cookie-pulse` so assets resolve under the project Pages URL. Leave it empty locally.
 
 Do not put private keys in the repo or in env files. The app never asks for a secret key; it only signs through the wallet adapter.
 
