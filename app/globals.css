@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+@theme {
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-ibm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(232, 165, 75, 0.16), transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, rgba(196, 122, 44, 0.12), transparent 50%),
+    #120c08;
+  color: #f6ead7;
+}
+
+.wallet-adapter-modal-wrapper {
+  background: rgba(18, 12, 8, 0.92) !important;
+}
+
+.wallet-adapter-modal {
+  background: #1b120c !important;
+  color: #f6ead7 !important;
+  border: 1px solid rgba(243, 197, 107, 0.18);
+}
+
+.wallet-adapter-modal-title,
+.wallet-adapter-modal-list-more,
+.wallet-adapter-modal-button-close {
+  color: #f6ead7 !important;
+}
+
+.wallet-adapter-button {
+  background: transparent !important;
+  color: #f6ead7 !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background: rgba(243, 197, 107, 0.08) !important;
+}
